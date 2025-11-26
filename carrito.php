@@ -180,11 +180,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         <tr>
             <td><?= htmlspecialchars($prod['titulo']) ?></td>
             <td><img src="<?= $prod['imagen'] ?>" width="80" alt="<?= htmlspecialchars($prod['titulo']) ?>"></td>
-            <td>$<?= number_format($prod['precio_unitario'],2) ?></td>
+            <td><?= number_format($prod['precio_unitario'],2) ?>€</td>
             <td>
                 <input type="number" name="cantidades[<?= $prod['id_carrito_item'] ?>]" value="<?= $prod['cantidad'] ?>" min="1" class="form-control">
             </td>
-            <td>$<?= number_format($prod['subtotal'],2) ?></td>
+            <td><?= number_format($prod['subtotal'],2) ?>€</td>
             <td>
                 <button type="submit" name="delete" value="<?= $prod['id_carrito_item'] ?>" class="btn btn-danger btn-sm">Eliminar</button>
             </td>
@@ -206,13 +206,40 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 </div>
 </main>
 
-<footer class="text-white text-center py-3" style="background-color: #a18262;">
-    <p class="mb-0">2025 CapituloUno</p>
+<footer class="text-white py-3" style="background: linear-gradient(135deg, #a18262, #6b4f3b);">
+  <div class="container">
+    <div class="row">
+      <!--En esta primera parte del footer tenemos los derechos  -->
+      <div class="col-md-4 text-center text-md-start mb-2">
+        <h6 class="fw-bold mb-1">CapituloUno</h6>
+        <p class="small mb-0">© 2025 Todos los derechos reservados</p>
+      </div>
+      <!--En estA segunda columna ponemos un poco de información sobre contactos -->
+      <div class="col-md-4 text-center mb-2">
+        <h6 class="fw-bold mb-2">Enlaces</h6>
+        <ul class="list-unstyled mb-0">
+          <li><a href="#about" class="text-white text-decoration-none">Sobre nosotros</a></li>
+          <li><a href="#services" class="text-white text-decoration-none">Servicios</a></li>
+          <li><a href="#contact" class="text-white text-decoration-none">Contacto</a></li>
+        </ul>
+      </div>
+      <!--En esta columna se dejan los enlaces a redes sociales -->
+      <div class="col-md-4 text-center text-md-end mb-2">
+        <h6 class="fw-bold mb-2">Síguenos</h6>
+        <a href="https://facebook.com" target="_blank" class="mx-2">
+          <img src="multimedia/facebook.png" alt="Facebook" width="28" height="28">
+        </a>
+        <a href="https://twitter.com" target="_blank" class="mx-2">
+          <img src="multimedia/twitter.png" alt="Twitter" width="28" height="28">
+        </a>
+        <a href="https://instagram.com" target="_blank" class="mx-2">
+          <img src="multimedia/instagram.png" alt="Instagram" width="28" height="28">
+        </a>
+      </div>
+    </div>
+  </div>
 </footer>
-
-
 <script src="javascript/scripts.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>

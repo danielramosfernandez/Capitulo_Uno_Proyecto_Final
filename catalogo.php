@@ -20,12 +20,10 @@ $resultPremium = $conexion->query($sqlPremium);
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Catálogo de Libros</title>
-
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="css/estilos.css" rel="stylesheet">
-
-
-  <link rel="stylesheet" href="css/nav_dark.css">
+<link rel="stylesheet" href="css/nav_dark.css">
+<link rel="icon" type="image/x-icon" href="multimedia/logo.png">
 </head>
 <body>
 <nav class="navbar navbar-expand-md sticky-top py-1 site-header">
@@ -143,11 +141,39 @@ $resultPremium = $conexion->query($sqlPremium);
     </div>
   </div>
 </section>
-<footer class="text-white text-center py-3" style="background-color: #a18262;">
-  <p class="mb-0">2025 CapituloUno</p>
+<footer class="text-white py-3" style="background: linear-gradient(135deg, #a18262, #6b4f3b);">
+  <div class="container">
+    <div class="row">
+      <!--En esta primera parte del footer tenemos los derechos  -->
+      <div class="col-md-4 text-center text-md-start mb-2">
+        <h6 class="fw-bold mb-1">CapituloUno</h6>
+        <p class="small mb-0">© 2025 Todos los derechos reservados</p>
+      </div>
+      <!--En estA segunda columna ponemos un poco de información sobre contactos -->
+      <div class="col-md-4 text-center mb-2">
+        <h6 class="fw-bold mb-2">Enlaces</h6>
+        <ul class="list-unstyled mb-0">
+          <li><a href="#about" class="text-white text-decoration-none">Sobre nosotros</a></li>
+          <li><a href="#services" class="text-white text-decoration-none">Servicios</a></li>
+          <li><a href="#contact" class="text-white text-decoration-none">Contacto</a></li>
+        </ul>
+      </div>
+      <!--En esta columna se dejan los enlaces a redes sociales -->
+      <div class="col-md-4 text-center text-md-end mb-2">
+        <h6 class="fw-bold mb-2">Síguenos</h6>
+        <a href="https://facebook.com" target="_blank" class="mx-2">
+          <img src="multimedia/facebook.png" alt="Facebook" width="28" height="28">
+        </a>
+        <a href="https://twitter.com" target="_blank" class="mx-2">
+          <img src="multimedia/twitter.png" alt="Twitter" width="28" height="28">
+        </a>
+        <a href="https://instagram.com" target="_blank" class="mx-2">
+          <img src="multimedia/instagram.png" alt="Instagram" width="28" height="28">
+        </a>
+      </div>
+    </div>
+  </div>
 </footer>
-
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="javascript/scripts.js"></script> <!-- Incluimos tu JS para modo oscuro -->
 </body>

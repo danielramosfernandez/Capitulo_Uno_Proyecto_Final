@@ -72,55 +72,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Inicio de sesión</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-/** El css fue introducido directamente en este archivo sin falta de enlazar al archivo de css*/
-body {
-    font-family: 'Raleway', sans-serif;
-    background-color: #e8e1d6;
-    color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    position: relative;
-}
-.login-container {
-    background: #fff;
-    padding: 35px 40px;
-    border-radius: 10px;
-    border: 6px solid #d4a85c;
-    width: 360px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.15);
-    position: relative;
-}
-.login-container h2 {margin-bottom: 20px;font-weight:700;color:#5a4634;text-align:center;}
-.login-container label {display:block;margin-bottom:8px;font-weight:500;color:#5a4634;}
-.login-container input[type="text"], .login-container input[type="password"] {width:100%;padding:10px;margin-bottom:18px;border:1.5px solid #c8b28c;border-radius:6px;font-size:16px;transition:border-color 0.3s, box-shadow 0.3s;}
-.login-container input[type="text"]:focus, .login-container input[type="password"]:focus {border-color:#d4a85c;box-shadow:0 0 4px rgba(212,168,92,0.4);outline:none;}
-.login-container button {width:100%;padding:12px;background-color:#d4a85c;border:none;border-radius:6px;color:#fff;font-weight:700;font-size:16px;cursor:pointer;transition:background-color 0.3s;}
-.login-container button:hover {background-color:#b98e4a;}
-.register-link {text-align:center;margin-top:15px;}
-.register-link a {color:#b98e4a;text-decoration:none;font-weight:600;}
-.register-link a:hover {text-decoration:underline;}
-.close-btn {position:absolute;top:25px;right:30px;width:36px;height:36px;background-color:#d4a85c;color:white;font-size:24px;font-weight:bold;border-radius:50%;text-align:center;line-height:36px;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,0.2);transition:transform 0.3s ease, background-color 0.3s;z-index:10;}
-.close-btn:hover {background-color:#b98e4a;transform:scale(1.1);}
-#modo {position:absolute;top:25px;left:30px;padding:8px 16px;background-color:#d4a85c;color:white;border:none;border-radius:20px;cursor:pointer;font-weight:600;box-shadow:0 2px 8px rgba(0,0,0,0.2);transition:background-color 0.3s, transform 0.3s;}
-#modo:hover {background-color:#b98e4a;transform:scale(1.05);}
-.fade-out {animation: fadeOutPage 0.5s forwards;}
-@keyframes fadeOutPage {to {opacity:0;transform:translateX(100%);}}
-.dark-mode {background-color:#3a3a3a !important;color:#fff !important;}
-.dark-mode .login-container {background-color:#444 !important;color:#fff !important;}
-.dark-mode .login-container label {color:#fff;}
-.dark-mode input {background-color:#555;color:#fff;border-color:#777;}
-.dark-mode input:focus {border-color:#d4a85c;box-shadow:0 0 4px rgba(212,168,92,0.6);}
-.dark-mode .register-link a {color:#d4a85c;}
-.dark-mode #modo {background-color:#d4a85c;color:#fff;}
-.error-msg {color:#cc3333;font-weight:600;text-align:center;margin-bottom:12px;}
-</style>
+<link rel="stylesheet" href="css/login.css">
+<link rel="icon" type="image/x-icon" href="multimedia/logo.png">
 </head>
 <body>
 

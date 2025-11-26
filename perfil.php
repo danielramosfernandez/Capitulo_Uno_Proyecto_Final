@@ -32,25 +32,32 @@ $stmt->execute();
 $historial = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 $stmt->close();
 
+//^Calculamos el total gastado
+$total_general = 0;
+foreach($historial as $pedido){
+    $total_general += $pedido['precio_pagado'];
+}
+
 //^También extraemos las fechas de principio y fin de suscripción
 $fecha_inicio = date("d/m/Y", strtotime($usuario['fecha_registro']));
 $fecha_fin = date("d/m/Y", strtotime("+1 month", strtotime($usuario['fecha_registro'])));
 ?>
 
 <!DOCTYPE html>
-<html lang="es">
-<head>
+  <html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Perfil de Usuario - CapituloUno</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Perfil de Usuario - CapituloUno</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Perfil de Usuario - CapituloUno</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <style>
-/** Estilos generales */
+//** Estilos generales */
+//**En este caso fue necesario dejar el CSS establecido directamente en la página */
 html, body {
   height: 100%;
   margin: 0;
@@ -61,15 +68,11 @@ html, body {
   display: flex;
   flex-direction: column;
 }
-
 main { flex: 1; }
-
 nav.site-header { background-color: #d4a85c; }
 nav a { color: #f8f9fa; text-decoration: none; transition: color 0.3s; }
 nav a:hover { color: #000; }
-
 footer { background-color: #a18262; color: #fff; text-align: center; padding: 15px 0; }
-
 .perfil-main { flex: 1; background-color: #e8e1d6; padding: 60px 20px; }
 .perfil-container {
   max-width: 900px;
@@ -91,21 +94,15 @@ footer { background-color: #a18262; color: #fff; text-align: center; padding: 15
 }
 .perfil-section:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
 .perfil-section h3 { font-size: 2rem; color: #5a4634; margin-bottom: 20px; font-weight: 600; }
-
-
 .perfil-section table { width: 100%; border-collapse: collapse; font-size: 1rem; min-width: 500px; }
 .perfil-section th, .perfil-section td { padding: 12px 15px; text-align: center; border-bottom: 1px solid #ddd; }
 .perfil-section th { background-color: #d4a85c; color: white; font-weight: 600; text-transform: uppercase; }
 .perfil-section tr:hover { background-color: #f0e6d1; }
 .perfil-section td { color: #333; }
-
-
 button, .btn-vermas, .btn-cart, .btn-actualizar, .btn-eliminar, .btn-finalizar { border-radius: 6px; border: none; cursor: pointer; transition: 0.3s; }
 button:hover, .btn-vermas:hover, .btn-cart:hover, .btn-actualizar:hover, .btn-eliminar:hover, .btn-finalizar:hover { opacity: 0.85; }
 .register-container, .subscription-form input { background-color: #fff; color: #000; border: 1px solid #ccc; border-radius: 5px; padding: 10px; }
 .register-container label, .subscription-form label { color: #555; }
-
-
 .dark-mode body { background-color: #2c2c2c !important; color: #f0f0f0 !important; }
 .dark-mode nav.site-header { background-color: #222 !important; }
 .dark-mode nav a { color: #f8f8f8 !important; }
@@ -118,25 +115,19 @@ button:hover, .btn-vermas:hover, .btn-cart:hover, .btn-actualizar:hover, .btn-el
 .dark-mode .perfil-header h2,
 .dark-mode .section-title,
 .dark-mode .opiniones h2 { color: #f0f0f0 !important; }
-
 .dark-mode .perfil-section table,
 .dark-mode .perfil-section table th,
 .dark-mode .perfil-section table td { background-color: #ffffff !important; color: #000 !important; border-color: #ccc !important; }
 .dark-mode .perfil-section table tbody tr:hover { background-color: #f9f9f9 !important; }
-
-
 .dark-mode .btn-actualizar,
 .dark-mode .btn-vermas,
 .dark-mode .btn-cart,
 .dark-mode .btn-eliminar,
 .dark-mode .btn-finalizar { background-color: #b78c47 !important; color: #fff !important; }
-
-
 .dark-mode .register-container,
 .dark-mode .subscription-form input { background-color: #444 !important; color: #f0f0f0 !important; border-color: #666 !important; }
 .dark-mode .register-container label,
 .dark-mode .subscription-form label { color: #fff !important; }
-
 @media (max-width: 768px) {
   .perfil-main { padding: 20px 10px; }
   .perfil-section { padding: 20px 15px; }
@@ -230,45 +221,76 @@ button:hover, .btn-vermas:hover, .btn-cart:hover, .btn-actualizar:hover, .btn-el
       </table>
     </div>
 
-    <!--Se muestra el historial de compras -->
-    <div class="perfil-section historial">
-      <h3>Historial de Pedidos</h3>
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>Pedido #</th>
-            <th>Libro</th>
-            <th>Fecha</th>
-            <th>Precio</th>
-            <th>Estado</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php if(count($historial) === 0): ?>
-            <tr><td colspan="5">No has realizado compras aún.</td></tr>
-          <?php else: ?>
-            <?php foreach($historial as $pedido): ?>
-            <tr>
-              <td><?= $pedido['id_compra'] ?></td>
-              <td><?= htmlspecialchars($pedido['titulo']) ?></td>
-              <td><?= date("d/m/Y", strtotime($pedido['fecha_compra'])) ?></td>
-              <td>$<?= number_format($pedido['precio_pagado'],2) ?></td>
-              <td>Entregado</td>
-            </tr>
-            <?php endforeach; ?>
-          <?php endif; ?>
-        </tbody>
-      </table>
-    </div>
-
+   <div class="perfil-section historial">
+  <h3>Historial de Pedidos</h3>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Pedido #</th>
+        <th>Libro</th>
+        <th>Fecha</th>
+        <th>Precio</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php if(count($historial) === 0): ?>
+        <tr><td colspan="5">No has realizado compras aún.</td></tr>
+      <?php else: ?>
+        <?php foreach($historial as $pedido): ?>
+        <tr>
+          <td><?= $pedido['id_compra'] ?></td>
+          <td><?= htmlspecialchars($pedido['titulo']) ?></td>
+          <td><?= date("d/m/Y", strtotime($pedido['fecha_compra'])) ?></td>
+          <td><?= number_format($pedido['precio_pagado'],2) ?>€</td>
+          <td>Entregado</td>
+        </tr>
+        <?php endforeach; ?>
+        <!-- Fila de total general -->
+        <tr>
+          <td colspan="3"><strong>Total gastado</strong></td>
+          <td><strong><?= number_format($total_general,2) ?>€</strong></td>
+          <td></td>
+        </tr>
+      <?php endif; ?>
+    </tbody>
+  </table>
+</div>
   </div>
 </main>
-
-<footer class="text-white text-center py-3" style="background-color: #a18262;">
-  <p class="mb-0">2025 CapituloUno</p>
+<footer class="text-white py-3" style="background: linear-gradient(135deg, #a18262, #6b4f3b);">
+  <div class="container">
+    <div class="row">
+      <!--En esta primera parte del footer tenemos los derechos  -->
+      <div class="col-md-4 text-center text-md-start mb-2">
+        <h6 class="fw-bold mb-1">CapituloUno</h6>
+        <p class="small mb-0">© 2025 Todos los derechos reservados</p>
+      </div>
+      <!--En estA segunda columna ponemos un poco de información sobre contactos -->
+      <div class="col-md-4 text-center mb-2">
+        <h6 class="fw-bold mb-2">Enlaces</h6>
+        <ul class="list-unstyled mb-0">
+          <li><a href="#about" class="text-white text-decoration-none">Sobre nosotros</a></li>
+          <li><a href="#services" class="text-white text-decoration-none">Servicios</a></li>
+          <li><a href="#contact" class="text-white text-decoration-none">Contacto</a></li>
+        </ul>
+      </div>
+      <!--En esta columna se dejan los enlaces a redes sociales -->
+      <div class="col-md-4 text-center text-md-end mb-2">
+        <h6 class="fw-bold mb-2">Síguenos</h6>
+        <a href="https://facebook.com" target="_blank" class="mx-2">
+          <img src="multimedia/facebook.png" alt="Facebook" width="28" height="28">
+        </a>
+        <a href="https://twitter.com" target="_blank" class="mx-2">
+          <img src="multimedia/twitter.png" alt="Twitter" width="28" height="28">
+        </a>
+        <a href="https://instagram.com" target="_blank" class="mx-2">
+          <img src="multimedia/instagram.png" alt="Instagram" width="28" height="28">
+        </a>
+      </div>
+    </div>
+  </div>
 </footer>
-
-
 <script src="javascript/scripts.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>

@@ -3,7 +3,6 @@ echo "<link rel='stylesheet' href='estilos_admin.css'>";
 
 echo "<div class='install-container'>";
 
-// CONFIGURA AQUÍ LA CONEXIÓN
 $host = "localhost";
 $user = "root";
 $pass = "";
@@ -15,10 +14,8 @@ if ($conn->connect_error) {
     die("<p style='color:red;'>Error de conexión: " . $conn->connect_error . "</p>");
 }
 
-// Título
 echo "<h2>Instalador de Administrador - CapituloUno</h2>";
 
-// 1. Verificar si ya existe un admin
 $result = $conn->query("SELECT COUNT(*) AS total FROM administradores");
 $row = $result->fetch_assoc();
 
@@ -28,7 +25,7 @@ if ($row['total'] > 0) {
     exit;
 }
 
-// 2. Crear el admin por defecto
+
 $nombre = "Admin";
 $email  = "admin@capitulouno.com";
 $password_plano = "AdminAdmin";
@@ -50,7 +47,7 @@ if ($stmt->execute()) {
 $stmt->close();
 $conn->close();
 
-echo "</div>"; // cierre contenedor
+echo "</div>"; 
 
 echo "<hr><p class='install-footer-info'><b>IMPORTANTE:</b> Borra este archivo <code>install.php</code> después de usarlo.</p>";
 ?>

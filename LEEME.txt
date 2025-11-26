@@ -6,4 +6,9 @@ Siendo:
 -Amarillo para comentarios de PHP
 -Azul para comentarios de JavaScript 
 -Verde para comentarios de CSS 
--Rosa para comentarios de HTML
+-Sin color para el HTML 
+
+Aunque ya se haya mecionado en el archivo.css, quiero resaltar que la gran mayoria 
+de los identificadores y de los nombres de las secciones de la página han sido puestos 
+en ingles a recomendacioón de nuestro tutor de practicas que menciono que en el ambito 
+profesional lo más común es poner estas parte en ingles

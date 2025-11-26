@@ -1,21 +1,666 @@
-/**En este archivo CSS se de estilo a casi todas las paginas */
+/**Sección de libros destacados */
+/*!Comentario importante sobre algunos nombres e identificadores en el código*/
+/*!Si bien hay varios identificadores en español la mayoria fueron cambiados*/
+/*!a posteriori a recomendación de nuestro tutor de empresa que nos comento */
+/*!que en el ambito profesional lo más común es que se pongán en ingles */
 
-/**Zona de estilos generales */
+.slider-container {
+  width: 95%;
+  max-width: 1200px;
+  margin: 40px auto;
+  background-color: #e8e1d6;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.carousel-item img {
+  width: 100%;
+  max-height: 450px; /* altura más razonable */
+  object-fit: contain; /* mantiene proporción de imagen */
+  border-radius: 10px;
+  margin: 0 auto;
+  display: block;
+}
+
+.caption-box {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 8px;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 90%;
+  text-align: center;
+  color: white;
+}
+
+.caption-box h5 {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.caption-box p {
+  font-size: 1.1rem;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1);
+}
+
+/**Estilos de la sección de usuarios */
+.opiniones {
+  background-color: #f8f9fa;
+  padding: 60px 20px;
+  border-radius: 15px;
+}
+
+.opiniones .card {
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.opiniones .card-title {
+  font-weight: 600;
+  color: #5a4634;
+}
+
+.opiniones .card-text {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/**Sección de modo oscuro de las opiniones */
+.dark-mode .opiniones {
+  background-color: #222;
+  color: #fff;
+}
+
+.dark-mode .opiniones .card {
+  background-color: #333;
+  color: #fff;
+}
+
+.dark-mode .opiniones .card-title {
+  color: #fff;
+}
+
+.dark-mode .opiniones .card-text {
+  color: #ddd;
+}
+
+/**Zona central o lo que seria la zona de llegada de la pagina */
+.central {
+  background: url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f')
+    no-repeat center center/cover;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+}
+
+/**Zona de estructura general */
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif;
+}
+
+body {
   background-color: #e8e1d6;
   color: #000;
+  font-family: 'Poppins', sans-serif;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Hace que el footer se mantenga abajo */
 }
 
 main {
   flex: 1;
 }
 
+/**Aqui configuramos una parte de el nav */
+nav.site-header {
+  background-color: #d4a85c;
+}
+
+nav a {
+  color: #f8f9fa;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #000000;
+}
+
+nav .container {
+  align-items: center;
+}
+
+/**Se le da estilo al carrusel */
+.slider-container {
+  width: 95%;
+  max-width: 1200px;
+  margin: 20px auto;
+  background-color: #e8e1d6; 
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.carousel-inner {
+  width: 100%;
+  margin: auto;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 750px; 
+  object-fit: cover;
+}
+
+.caption-box {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 8px;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 90%;
+  text-align: center;
+  color: white;
+}
+
+/**Se le da un poco de estilo a las cards */
+.book-card:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s;
+}
+
+/**Estilos variados y algunas cosas desechadas */
+.por {
+  color: rgb(0, 0, 0);
+}
+
+/* .cart-counter {
+  font-weight: bold;
+  color: white;
+  background-color: red;
+  padding: 0 8px;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  margin-left: 4px;
+} */
+
+/**Estilo para el separador de la página del inicio */
+.separador {
+  margin-top: 0;
+  padding: 15px;
+  background-color: #d4a85c;
+  font-size: 1.1rem;
+  text-align: center;
+  color: #333;
+}
+
+/**Modo oscuro para todas las paginas */
+.dark-mode {
+  background-color: #3a3a3a !important;
+  color: #fff !important;
+}
+
+.dark-mode nav {
+  background-color: #222 !important;
+  color: white;
+}
+
+.dark-mode .separador {
+  background-color: #222 !important;
+  color: white;
+}
+
+
+
+.dark-mode nav a:hover {
+  color: #d4a85c;
+}
+
+/**Estilos del carrito */
+.carrito-container {
+  max-width: 1000px;
+  margin: 60px auto;
+  background-color: #f8f9fa;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  color: #333;
+}
+
+.carrito-container h1 {
+  text-align: center;
+  color: #5a4634;
+  margin-bottom: 30px;
+}
+
+.carrito-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: white;
+}
+
+.carrito-container th,
+.carrito-container td {
+  padding: 12px 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.carrito-container th {
+  background-color: #d4a85c;
+  color: white;
+}
+
+.producto-imagen {
+  max-width: 80px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.cantidad-input {
+  width: 60px;
+  padding: 5px;
+  text-align: center;
+}
+
+.btn-actualizar,
+.btn-eliminar {
+  background-color: #d4a85c;
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.btn-actualizar:hover {
+  background-color: #b98b45;
+}
+
+.btn-eliminar {
+  background-color: #cc3333;
+}
+
+.btn-eliminar:hover {
+  background-color: #a32929;
+}
+
+.total {
+  font-weight: bold;
+  font-size: 1.2em;
+  text-align: right;
+  margin-top: 20px;
+  color: #5a4634;
+}
+
+.acciones {
+  margin-top: 25px;
+  text-align: right;
+}
+
+.acciones a {
+  text-decoration: none;
+  background-color: #777;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 4px;
+  margin-left: 8px;
+  transition: 0.3s;
+}
+
+.acciones a:hover {
+  background-color: #555;
+}
+
+.acciones .btn-finalizar {
+  background-color: #4CAF50;
+}
+
+.acciones .btn-finalizar:hover {
+  background-color: #3a8c40;
+}
+
+/**Estilos oscuros para el carrito */
+.dark-mode .carrito-container {
+  background-color: #3a3a3a;
+  color: #fff;
+}
+
+.dark-mode .carrito-container table {
+  background-color: #444;
+  color: white;
+}
+
+.dark-mode .carrito-container th {
+  background-color: #222;
+}
+
+.dark-mode .btn-actualizar {
+  background-color: #b98b45;
+}
+
+.dark-mode .btn-eliminar {
+  background-color: #a32929;
+}
+/**Partes de diseño especificas para registro */
+.registro-body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #e8e1d6; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.register-container {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  width: 360px;
+  position: relative;
+}
+
+.register-container h2 {
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #5a4634;
+  text-align: center;
+}
+
+.register-container label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #555;
+}
+
+.register-container input[type="text"],
+.register-container input[type="email"],
+.register-container input[type="date"],
+.register-container input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1.5px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.register-container input:focus {
+  border-color: #d4a85c; /* dorado */
+  outline: none;
+}
+
+.register-container button {
+  width: 100%;
+  padding: 12px;
+  background-color: #d4a85c; /* dorado */
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.register-container button:hover {
+  background-color: #b98b45; /* tono más oscuro */
+}
+
+.error-msg {
+  color: #cc3333;
+  font-weight: 600;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.success-msg {
+  color: #28a745;
+  font-weight: 600;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.close-btn {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 36px;
+  height: 36px;
+  background-color: #d4a85c;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 36px;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, background-color 0.3s;
+  z-index: 10;
+}
+
+.close-btn:hover {
+  background-color: #b98b45;
+  transform: scale(1.1);
+}
+
+.fade-out {
+  animation: fadeOutPage 0.5s forwards;
+}
+
+@keyframes fadeOutPage {
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+/**Estilos para la página del catálogo */
+.book-card {
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.book-card img {
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.card-body {
+  padding: 10px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-title {
+  font-size: 1.1rem;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.btn-vermas {
+  background-color: #d4a85c;
+  color: white;
+  font-size: 0.9rem;
+  padding: 5px 10px;
+}
+
+.btn-vermas:hover {
+  background-color: #b98b45;
+  color: white;
+}
+
+.nav-tabs .nav-link.active {
+  background-color: #d4a85c;
+  color: white;
+}
+
+.nav-tabs .nav-link {
+  color: #5a4634;
+}
+
+/**Ajustes de responsividad de la pagina */
+@media (max-width: 768px) {
+  .book-card img {
+    height: 120px;
+  }
+  .book-card {
+    height: auto;
+  }
+}
+
+/**Estilos para dejar la cabecera fija */
+.cabecera-fija {
+  position: relative;
+  width: 100%;
+  padding-top: 100px;
+}
+
+.cabecera-fija img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  object-position: center;
+}
+
+/**Centrado de el formulario sobre la imagen */
+.busqueda-cabecera {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+}
+
+.input-group .form-control {
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.btn-buscar {
+  background-color: #d4a85c;
+  color: white;
+  border: none;
+  padding: 0 15px;
+  transition: background-color 0.3s;
+}
+
+.btn-buscar:hover {
+  background-color: #b98b45;
+  color: white;
+}
+
+/**Zona de destacado en la página de suscripciones */
+.bg-highlight {
+  background-color: #f2e8d3; 
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  margin-bottom: 30px;
+}
+
+.content-section {
+  width: 90%;
+  margin: 30px auto;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.content-section:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.content-section img {
+  width: 400px;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.content-text {
+  color: #5a4634;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #5a4634;
+}
+
+/**Formulario */
+.subscription-form {
+  width: 60%;
+  margin: 40px auto;
+  text-align: center;
+}
+
+/**Modo oscuro */
+.dark-mode .bg-highlight {
+  background-color: #4a4a4a;
+}
+
+.dark-mode .content-text,
+.dark-mode .section-title,
+.dark-mode .subscription-form {
+  color: #fff;
+}
+
+.dark-mode .subscription-form input {
+  background-color: #333;
+  border-color: #666;
+}
+
+.dark-mode .subscription-form label {
+  color: #d4a85c;
+}
+
+.subscription-form label,
+.subscription-form h4 {
+  color: #3a2f24;
+}
+
+/**Fondos y estilos generales */
+body {
+  background-color: #e8e1d6;
+  color: #000;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/**Nav */
 nav.site-header {
   background-color: #d4a85c;
 }
@@ -30,223 +675,101 @@ nav a:hover {
   color: #000;
 }
 
-
-footer {
-  background-color: #a18262;
-  color: #fff;
-  text-align: center;
-  padding: 15px 0;
-}
-
-/**Zona de la pagina de perfil */
-.perfil-main {
-  flex: 1;
-  background-color: #e8e1d6;
-  padding: 60px 20px;
-}
-
-.perfil-container {
-  max-width: 900px;
-  margin: 0 auto;
+/**Sección de estilos dedicada al contenedor del libro */
+.book-container {
+  max-width: 1000px;
+  margin: 60px auto;
   padding: 40px;
   background-color: #ffffff;
   border-radius: 25px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  animation: fadeIn 0.5s ease-in-out;
 }
 
-.perfil-header {
-  text-align: center;
-  margin-bottom: 40px;
+/**Pequeño ajuste para las animaciones de la pagina */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.perfil-header h2 {
-  font-size: 2.4rem;
-  color: #5a4634;
-  font-weight: 700;
-}
-
-.perfil-section {
-  background-color: #ffffff;
-  border-radius: 25px;
-  padding: 30px 25px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-  overflow-x: auto;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.perfil-section:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-}
-
-.perfil-section h3 {
-  font-size: 2rem;
-  color: #5a4634;
-  margin-bottom: 20px;
-  font-weight: 600;
-}
-
-/** Estilos para las tablas */
-.perfil-section table {
+/**Ajustes de la imagen del libro */
+.book-img {
   width: 100%;
-  border-collapse: collapse;
-  font-size: 1rem;
-  min-width: 500px;
+  max-width: 380px;
+  border-radius: 15px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.35);
 }
 
-.perfil-section th,
-.perfil-section td {
-  padding: 12px 15px;
-  text-align: center;
-  border-bottom: 1px solid #ddd;
+/**Estilos para el titulo y el yexto de la pagina */
+.book-title {
+  font-size: 2.6rem;
+  font-weight: bold;
+  color: #5a4634;
 }
 
-.perfil-section th {
-  background-color: #d4a85c;
-  color: white;
-  font-weight: 600;
-  text-transform: uppercase;
+.book-author {
+  font-size: 1.4rem;
+  color: #7a5b45;
+  margin-bottom: 20px;
 }
 
-.perfil-section tr:hover {
-  background-color: #f0e6d1;
-}
-
-.perfil-section td {
+.book-description {
+  font-size: 1.15rem;
+  line-height: 1.8;
   color: #333;
 }
 
-/**Zona para el estilo de botones y formularios */
-button, .btn-vermas, .btn-cart, .btn-actualizar, .btn-eliminar, .btn-finalizar {
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s;
+.book-price {
+  font-size: 1.3rem;
+  margin-top: 20px;
+  color: #5a4634;
+}
+/**Ajuste general para todos los titulos */
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode h4,
+.dark-mode h5,
+.dark-mode h6 {
+  color: #ae9045 !important;
+}
+/**Footer */
+footer {
+  background: linear-gradient(135deg, #a18262, #6b4f3b);
+  color: #fff;
+  padding: 20px 0;
 }
 
-button:hover, .btn-vermas:hover, .btn-cart:hover, .btn-actualizar:hover, .btn-eliminar:hover, .btn-finalizar:hover {
-  opacity: 0.85;
+footer a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
 }
 
-.register-container, .subscription-form input {
-  background-color: #fff;
-  color: #000;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
+footer a:hover {
+  color: #d4a85c;
 }
 
-.register-container label, .subscription-form label {
-  color: #555;
-}
-
-/**Modos oscuros */
-.dark-mode body {
-  background-color: #2c2c2c !important;
-  color: #f0f0f0 !important;
-}
-
-.dark-mode nav.site-header {
-  background-color: #222 !important;
-}
-
-.dark-mode nav a {
-  color: #f8f8f8 !important;
-}
-
-.dark-mode nav a:hover {
-  color: #d4a85c !important;
-}
 
 .dark-mode footer {
-  background-color: #222 !important;
-  color: #fff !important;
+  background: linear-gradient(135deg, #101010, #151515) !important;
+  color: #ddd !important;
 }
 
-/**Modo oscuro de perfil */
-.dark-mode .perfil-main {
-  background-color: #2c2c2c !important;
+
+.dark-mode footer a {
+  color: #ddd;
 }
 
-.dark-mode .perfil-container {
-  background-color: #333 !important;
-  color: #f0f0f0 !important;
+.dark-mode footer a:hover {
+  color: #ae9045;
 }
 
-.dark-mode .perfil-section {
-  background-color: #333 !important;
-  color: #f0f0f0 !important;
-}
 
-.dark-mode .perfil-section h3,
-.dark-mode .perfil-header h2,
-.dark-mode .section-title,
-.dark-mode .opiniones h2 {
-  color: #f0f0f0 !important;
-}
-
-/**Sección para que las tablas del perfil aparezcan siempre de color blanco con letras negras*/
-.dark-mode .perfil-section table,
-.dark-mode .perfil-section table th,
-.dark-mode .perfil-section table td {
-  background-color: #ffffff !important;
-  color: #000 !important;
-  border-color: #ccc !important;
-}
-
-.dark-mode .perfil-section table tbody tr:hover {
-  background-color: #f9f9f9 !important;
-}
-
-/**Cards y zona de opiniones */
-.dark-mode .card,
-.dark-mode .opiniones .card {
-  background-color: #ffffff !important;
-  color: #000 !important;
-}
-
-.dark-mode .opiniones {
-  background-color: #333 !important;
-}
-
-/**Botones del modo oscuro */
-.dark-mode .btn-actualizar,
-.dark-mode .btn-vermas,
-.dark-mode .btn-cart,
-.dark-mode .btn-eliminar,
-.dark-mode .btn-finalizar {
-  background-color: #b78c47 !important;
-  color: #fff !important;
-}
-
-/**Seccion de estilos de formularios */
-.dark-mode .register-container,
-.dark-mode .subscription-form input {
-  background-color: #444 !important;
-  color: #f0f0f0 !important;
-  border-color: #666 !important;
-}
-
-.dark-mode .register-container label,
-.dark-mode .subscription-form label {
-  color: #fff !important;
-}
-
-/**Diseño responsive */
-@media (max-width: 768px) {
-  .perfil-main {
-    padding: 20px 10px;
-  }
-
-  .perfil-section {
-    padding: 20px 15px;
-  }
-
-  .perfil-section h3 {
-    font-size: 1.6rem;
-  }
-
-  .perfil-section table {
-    font-size: 0.9rem;
-  }
-}
+/*

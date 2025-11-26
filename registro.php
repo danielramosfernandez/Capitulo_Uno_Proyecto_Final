@@ -67,28 +67,8 @@
     <title>Registro - CapituloUno</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-    
-    body { font-family: 'Raleway', sans-serif; background-color: #e8e1d6; color: #333; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; position: relative; }
-    .register-container { background: #fff; padding: 35px 40px; border-radius: 10px; border: 6px solid #d4a85c; width: 400px; box-shadow: 0 0 20px rgba(0,0,0,0.15); position: relative; }
-    .register-container h2 { margin-bottom: 20px; font-weight: 700; color: #5a4634; text-align: center; }
-    .register-container label { display: block; margin-bottom: 8px; font-weight: 500; color: #5a4634; }
-    .register-container input[type="text"], .register-container input[type="email"], .register-container input[type="password"], .register-container select { width: 100%; padding: 10px; margin-bottom: 18px; border: 1.5px solid #c8b28c; border-radius: 6px; font-size: 16px; transition: border-color 0.3s, box-shadow 0.3s; }
-    .register-container input:focus, .register-container select:focus { border-color: #d4a85c; box-shadow: 0 0 4px rgba(212,168,92,0.4); outline: none; }
-    .register-container button { width: 100%; padding: 12px; background-color: #d4a85c; border: none; border-radius: 6px; color: #fff; font-weight: 700; font-size: 16px; cursor: pointer; transition: background-color 0.3s; }
-    .register-container button:hover { background-color: #b98e4a; }
-    .close-btn { position: absolute; top: 25px; right: 30px; width: 36px; height: 36px; background-color: #d4a85c; color: white; font-size: 24px; font-weight: bold; border-radius: 50%; text-align: center; line-height: 36px; text-decoration: none; box-shadow: 0 2px 8px rgba(0,0,0,0.2); transition: transform 0.3s ease, background-color 0.3s; z-index: 10; }
-    .close-btn:hover { background-color: #b98e4a; transform: scale(1.1); }
-    .error-msg { color: #cc3333; font-weight: 600; text-align: center; margin-bottom: 12px; }
-    .success-msg { color: #2e7d32; font-weight: 600; text-align: center; margin-bottom: 12px; }
-    .fade-out { animation: fadeOutPage 0.5s forwards; }
-    @keyframes fadeOutPage { to { opacity: 0; transform: translateX(100%); } }
-    .dark-mode { background-color: #3a3a3a !important; color: #fff !important; }
-    .dark-mode .register-container { background-color: #444 !important; color: #fff !important; }
-    .dark-mode .register-container label { color: #fff; }
-    .dark-mode input, .dark-mode select { background-color: #555; color: #fff; border-color: #777; }
-    .dark-mode input:focus, .dark-mode select:focus { border-color: #d4a85c; box-shadow: 0 0 4px rgba(212,168,92,0.6); }
-    </style>
+    <link rel="stylesheet" href="css/registro.css">
+    <link rel="icon" type="image/x-icon" href="multimedia/logo.png">
     </head>
     <body>
 
