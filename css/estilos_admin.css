@@ -1,0 +1,69 @@
+/**En este css se establecen los estilos para la zona de administrador  */
+
+/** Fondo general */
+body {
+    background-color: #f2e8d3;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+/**Se usa install-container para englobar todo lo que haya dentro de dicho contenedor  */
+/**Contenedor principal*/
+.install-container {
+    max-width: 700px;
+    margin: 60px auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+/**Títulos */
+.install-container h2 {
+    color: #5a4634;
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+/**Texto general */
+.install-container p {
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+.install-container b {
+    color: #5a4634;
+}
+
+/**Código */
+code {
+    background: #eee;
+    padding: 6px 8px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+/**Animación suave de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/**Línea al final */
+.install-footer-info {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 1rem;
+    color: #5a4634;
+}

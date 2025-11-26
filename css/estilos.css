@@ -1,0 +1,252 @@
+/**En este archivo CSS se de estilo a casi todas las paginas */
+
+/**Zona de estilos generales */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #e8e1d6;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+nav.site-header {
+  background-color: #d4a85c;
+}
+
+nav a {
+  color: #f8f9fa;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #000;
+}
+
+
+footer {
+  background-color: #a18262;
+  color: #fff;
+  text-align: center;
+  padding: 15px 0;
+}
+
+/**Zona de la pagina de perfil */
+.perfil-main {
+  flex: 1;
+  background-color: #e8e1d6;
+  padding: 60px 20px;
+}
+
+.perfil-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 25px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+.perfil-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.perfil-header h2 {
+  font-size: 2.4rem;
+  color: #5a4634;
+  font-weight: 700;
+}
+
+.perfil-section {
+  background-color: #ffffff;
+  border-radius: 25px;
+  padding: 30px 25px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  overflow-x: auto;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.perfil-section:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.perfil-section h3 {
+  font-size: 2rem;
+  color: #5a4634;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/** Estilos para las tablas */
+.perfil-section table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+  min-width: 500px;
+}
+
+.perfil-section th,
+.perfil-section td {
+  padding: 12px 15px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.perfil-section th {
+  background-color: #d4a85c;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.perfil-section tr:hover {
+  background-color: #f0e6d1;
+}
+
+.perfil-section td {
+  color: #333;
+}
+
+/**Zona para el estilo de botones y formularios */
+button, .btn-vermas, .btn-cart, .btn-actualizar, .btn-eliminar, .btn-finalizar {
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover, .btn-vermas:hover, .btn-cart:hover, .btn-actualizar:hover, .btn-eliminar:hover, .btn-finalizar:hover {
+  opacity: 0.85;
+}
+
+.register-container, .subscription-form input {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.register-container label, .subscription-form label {
+  color: #555;
+}
+
+/**Modos oscuros */
+.dark-mode body {
+  background-color: #2c2c2c !important;
+  color: #f0f0f0 !important;
+}
+
+.dark-mode nav.site-header {
+  background-color: #222 !important;
+}
+
+.dark-mode nav a {
+  color: #f8f8f8 !important;
+}
+
+.dark-mode nav a:hover {
+  color: #d4a85c !important;
+}
+
+.dark-mode footer {
+  background-color: #222 !important;
+  color: #fff !important;
+}
+
+/**Modo oscuro de perfil */
+.dark-mode .perfil-main {
+  background-color: #2c2c2c !important;
+}
+
+.dark-mode .perfil-container {
+  background-color: #333 !important;
+  color: #f0f0f0 !important;
+}
+
+.dark-mode .perfil-section {
+  background-color: #333 !important;
+  color: #f0f0f0 !important;
+}
+
+.dark-mode .perfil-section h3,
+.dark-mode .perfil-header h2,
+.dark-mode .section-title,
+.dark-mode .opiniones h2 {
+  color: #f0f0f0 !important;
+}
+
+/**Sección para que las tablas del perfil aparezcan siempre de color blanco con letras negras*/
+.dark-mode .perfil-section table,
+.dark-mode .perfil-section table th,
+.dark-mode .perfil-section table td {
+  background-color: #ffffff !important;
+  color: #000 !important;
+  border-color: #ccc !important;
+}
+
+.dark-mode .perfil-section table tbody tr:hover {
+  background-color: #f9f9f9 !important;
+}
+
+/**Cards y zona de opiniones */
+.dark-mode .card,
+.dark-mode .opiniones .card {
+  background-color: #ffffff !important;
+  color: #000 !important;
+}
+
+.dark-mode .opiniones {
+  background-color: #333 !important;
+}
+
+/**Botones del modo oscuro */
+.dark-mode .btn-actualizar,
+.dark-mode .btn-vermas,
+.dark-mode .btn-cart,
+.dark-mode .btn-eliminar,
+.dark-mode .btn-finalizar {
+  background-color: #b78c47 !important;
+  color: #fff !important;
+}
+
+/**Seccion de estilos de formularios */
+.dark-mode .register-container,
+.dark-mode .subscription-form input {
+  background-color: #444 !important;
+  color: #f0f0f0 !important;
+  border-color: #666 !important;
+}
+
+.dark-mode .register-container label,
+.dark-mode .subscription-form label {
+  color: #fff !important;
+}
+
+/**Diseño responsive */
+@media (max-width: 768px) {
+  .perfil-main {
+    padding: 20px 10px;
+  }
+
+  .perfil-section {
+    padding: 20px 15px;
+  }
+
+  .perfil-section h3 {
+    font-size: 1.6rem;
+  }
+
+  .perfil-section table {
+    font-size: 0.9rem;
+  }
+}

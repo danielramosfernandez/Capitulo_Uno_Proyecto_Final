@@ -1,0 +1,144 @@
+/**En esta sección se establecem los estilos para la pestaña de admin */
+/**Estos estilos comparados con el resto de la aplicación son bastante más simples */
+/**Siendo la principal razón que esta sección no la debe ver el cliente */
+.admin-container {
+  max-width: 1000px;
+  margin: 60px auto;
+  padding: 40px;
+  background-color: #ffffff; 
+  border-radius: 25px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/** Este estilo para el admin se identifica con .admin */
+.admin-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #5a4634; 
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.admin-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.admin-buttons .btn-admin {
+  background-color: #d4a85c;
+  color: black;
+  font-weight: bold;
+  padding: 12px 25px;
+  border-radius: 12px;
+  border: none;
+  transition: 0.3s;
+}
+
+.admin-buttons .btn-admin:hover {
+  background-color: #b78c47; 
+  color: white;
+}
+
+.admin-buttons .btn-danger {
+  background-color: #cc3333;
+}
+
+.admin-buttons .btn-danger:hover {
+  background-color: #a32929;
+  color: white;
+}
+
+.admin-panel {
+  margin-top: 30px;
+  padding: 25px;
+  background-color: #f8f9fa; 
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.admin-panel h2 {
+  color: #5a4634;
+  margin-bottom: 15px;
+}
+
+.admin-panel p {
+  color: #333;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.table-responsive {
+  max-height: 420px;
+  overflow: auto;
+}
+
+.table th {
+  background-color: #d4a85c;
+  color: white;
+  font-weight: 600;
+}
+
+.table tbody tr:hover {
+  background-color: #f0e6d1;
+}
+
+.table td {
+  color: #333;
+}
+
+.btn-crud {
+  background-color: #d4a85c;
+  color: black;
+  padding: 8px 15px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-crud:hover {
+  background-color: #b78c47;
+  color: white;
+}
+
+.btn-crud.btn-eliminar {
+  background-color: #cc3333;
+}
+
+.btn-crud.btn-eliminar:hover {
+  background-color: #a32929;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/**Sección del modo oscuro */
+.dark-mode .admin-container,
+.dark-mode .admin-panel {
+  background-color: #3a3a3a;
+  color: #fff;
+}
+
+.dark-mode table th {
+  background-color: #222;
+  color: #fff;
+}
+
+.dark-mode table tbody tr:hover {
+  background-color: #555;
+}
+
+.dark-mode .btn-crud {
+  background-color: #b78c47;
+  color: #fff;
+}
+
+.dark-mode .btn-crud.btn-eliminar {
+  background-color: #a32929;
+}

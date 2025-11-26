@@ -1,0 +1,46 @@
+/**Fondo oscuro del header */
+.site-header {
+  background-color: #212529; 
+  transition: background-color 0.3s ease;
+}
+
+/**Enlaces */
+.site-header .nav-link {
+  color: #f8f9fa; 
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.site-header .nav-link:hover {
+  color: #ffc107; 
+}
+
+/**Con esta siguiente seccion del navbar se consigue que cuando se haga pequeña la pagina(movil) el menu se sustituya por un botón */
+.navbar-toggler {
+  border-color: #f8f9fa;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28 248, 249, 250, 1 %29)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/**Botón del carrito en el navegador */
+.site-header .carro {
+  filter: brightness(0) invert(1);
+  transition: filter 0.3s ease;
+}
+
+.site-header .carro:hover {
+  filter: brightness(0.8) invert(1);
+}
+
+/**Versión del botón en modo oscuro*/
+#modo {
+  border-color: #f8f9fa;
+  color: #f8f9fa;
+}
+
+#modo:hover {
+  background-color: #ffc107;
+  color: #212529;
+}

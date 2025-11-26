@@ -1,0 +1,9 @@
+Para la revisión del codigo se recomienda el uso del siguiente plugin: 
+https://marketplace.visualstudio.com/items?itemName=ParthR2031.colorful-comments
+
+Este plugin permitira ver los plugins de manera mas colorida y facil de identificiar 
+Siendo: 
+-Amarillo para comentarios de PHP
+-Azul para comentarios de JavaScript 
+-Verde para comentarios de CSS 
+-Rosa para comentarios de HTML

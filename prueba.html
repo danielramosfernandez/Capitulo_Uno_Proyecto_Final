@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CapituloUno</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    
+      
+    
+    .hero {
+      background: url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f') no-repeat center center/cover;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: #a18262;
+    }
+
+    .book-card:hover {
+      transform: scale(1.02);
+      transition: transform 0.3s;
+    }
+
+    .cart-counter {
+      font-weight: bold;
+      color: white;
+      background-color: red;
+      padding: 0 8px;
+      border-radius: 50%;
+      font-size: 0.8rem;
+      margin-left: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav style="background-color: #a18262;" class="navbar navbar-expand-lg navbar-dark  sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">ðŸ“š CapituloUno</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">CatÃ¡logo</a></li>
+          <li class="nav-item">
+            <a class="nav-link position-relative" href="#">
+              ðŸ›’ Carrito <span id="cartCount" class="cart-counter">0</span>
+            </a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="#">Inicio de sesiÃ³n</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero text-center">
+    <div>
+      <h1 class="display-4">Bienvenido a CapituloUno</h1>
+      <p class="lead">Explora, descubre y lee tus libros favoritos</p>
+    </div>
+  </section>
+
+  <!-- Destacados -->
+  <section class="py-5 text-center bg-light">
+    <div class="container">
+      <h2 class="mb-4">Â¿Por quÃ© elegirnos?</h2>
+      <div class="row">
+        <div class="col-md-4 card h-100 book-card ">
+          <h5>ðŸ“¦ EnvÃ­os RÃ¡pidos</h5>
+          <p>Recibe tus libros en 24/48h en toda EspaÃ±a.</p>
+        </div>
+        <div class="col-md-4 card h-100 book-card">
+          <h5>ðŸ“š Gran CatÃ¡logo</h5>
+          <p>Miles de tÃ­tulos disponibles para todos los gustos.</p>
+        </div>
+        <div class="col-md-4 card h-100 book-card">
+          <h5>ðŸ’³ Pagos Seguros</h5>
+          <p>Compra con total confianza y protecciÃ³n.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--Seccion del Catalogo-->
+  <section class="container py-5">
+    <h2 class="mb-4 text-center">CatÃ¡logo de Libros</h2>
+    <div class="row" id="bookList">
+      <!-- JS genera libros -->
+    </div>
+  </section>
+
+  <!--Pie de pagina-->
+  <footer style="background-color: #a18262;" class=" text-white text-center py-3">
+    <p class="mb-0">Â© 2025 CapituloUno</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    const books = [
+      { id: 1, title: "Cien AÃ±os de Soledad", author: "Gabriel GarcÃ­a MÃ¡rquez", price: 15.99 },
+      { id: 2, title: "Don Quijote de la Mancha", author: "Miguel de Cervantes", price: 12.50 },
+      { id: 3, title: "La Sombra del Viento", author: "Carlos Ruiz ZafÃ³n", price: 14.00 },
+      { id: 4, title: "Rayuela", author: "Julio CortÃ¡zar", price: 13.75 },
+      { id: 5, title: "Pedro PÃ¡ramo", author: "Juan Rulfo", price: 11.95 },
+      { id: 6, title: "Ficciones", author: "Jorge Luis Borges", price: 16.50 }
+    ];
+
+    let cartCount = 0;
+
+    function addToCart(bookId) {
+      cartCount++;
+      document.getElementById("cartCount").innerText = cartCount;
+      alert("Libro agregado al carrito");
+    }
+
+    function renderBooks() {
+      const container = document.getElementById("bookList");
+      books.forEach(book => {
+        container.innerHTML += `
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 book-card">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">${book.title}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">${book.author}</h6>
+                <p class="card-text mt-auto">Precio: ${book.price.toFixed(2)}â‚¬</p>
+                <button class="btn btn-primary mt-3" onclick="addToCart(${book.id})">Agregar al carrito</button>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    renderBooks();
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

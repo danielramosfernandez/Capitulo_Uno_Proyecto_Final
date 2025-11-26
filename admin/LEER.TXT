@@ -1,0 +1,1 @@
+El archivo "creador_admin.php" se deberá ejecutar una unica vez, se trata de un archivo que crea el admin nada más
