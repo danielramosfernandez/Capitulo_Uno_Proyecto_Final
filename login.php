@@ -1,34 +1,29 @@
 <?php
+// Activar errores para depuración
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 session_start();
-
-
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db = "capitulouno";
-
-$conn = new mysqli($host, $user, $pass, $db);
-if ($conn->connect_error) {
-    die("Error de conexión: " . $conn->connect_error);
-}
+include 'base_de_datos/conexion.php'; // Conexión a la BD
 
 $error = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $usuario = trim($_POST["usuario"]);
     $password = trim($_POST["password"]);
-//^Se comprueba si existen administradores 
-    $stmt = $conn->prepare("SELECT id_admin, nombre, email, contraseña, rol FROM administradores WHERE email=? OR nombre=? LIMIT 1");
+
+    //^Se comprueba si existen administradores 
+    $stmt = $conexion->prepare("SELECT id_admin, nombre, email, contraseña, rol FROM administradores WHERE email=? OR nombre=? LIMIT 1");
     $stmt->bind_param("ss", $usuario, $usuario);
     $stmt->execute();
-    $result = $stmt->get_result();
-//^Se verifica que el administrador ha introducido los comentarios de manera correcta
-    if ($result->num_rows === 1) {
-        $row = $result->fetch_assoc();
-        if (password_verify($password, $row["contraseña"])) {
-            $_SESSION["id_admin"] = $row["id_admin"];
-            $_SESSION["nombre"] = $row["nombre"];
-            $_SESSION["rol"] = $row["rol"];
+    $stmt->bind_result($id_admin, $nombre, $email, $hash_password, $rol);
+
+    //^Se verifica que el administrador ha introducido los comentarios de manera correcta
+    if ($stmt->fetch()) {
+        if (password_verify($password, $hash_password)) {
+            $_SESSION["id_admin"] = $id_admin;
+            $_SESSION["nombre"] = $nombre;
+            $_SESSION["rol"] = $rol;
             //^Si todo es correcto se le redirige al panel de administrador
             header("Location: admin/admin.php");
             exit;
@@ -37,20 +32,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $error = "Contraseña incorrecta";
         }
     } else {
+        $stmt->close();
+
         //^En el caso de que no sea admin se comrpueba entonces en usuarios normales
-        $stmt = $conn->prepare("SELECT id_usuario, nombre, email, contraseña FROM usuarios WHERE email=? OR nombre=? LIMIT 1");
+        $stmt = $conexion->prepare("SELECT id_usuario, nombre, email, contraseña FROM usuarios WHERE email=? OR nombre=? LIMIT 1");
         $stmt->bind_param("ss", $usuario, $usuario);
         $stmt->execute();
-        $result = $stmt->get_result();
-//^Se verifica que el administrador ha introducido los comentarios de manera correcta
-        if ($result->num_rows === 1) {
-            $row = $result->fetch_assoc();
-            if (password_verify($password, $row["contraseña"])) {
-                $_SESSION["id_usuario"] = $row["id_usuario"];
-                $_SESSION["nombre"] = $row["nombre"];
-                $_SESSION["email"] = $row["email"];
+        $stmt->bind_result($id_usuario, $nombre_usuario, $email_usuario, $hash_password_usuario);
+
+        //^Se verifica que el administrador ha introducido los comentarios de manera correcta
+        if ($stmt->fetch()) {
+            if (password_verify($password, $hash_password_usuario)) {
+                $_SESSION["id_usuario"] = $id_usuario;
+                $_SESSION["nombre"] = $nombre_usuario;
+                $_SESSION["email"] = $email_usuario;
                 //^Si todo es correcto se le redirige al inicio
-                header("Location: inicio.php");
+                header("Location: index.php");
                 exit;
             } else {
                 //^Si no se introdujo la contraseña adecuada se notifica 
@@ -60,8 +57,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             //^Si el usuario no se encuentra se notifica también
             $error = "Usuario no encontrado";
         }
-        $stmt->close();
     }
+
     $stmt->close();
 }
 ?>
@@ -79,14 +76,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <body>
 
 <button id="modo">Oscuro</button>
-<a href="inicio.php" class="close-btn" id="closeBtn" title="Cerrar">&times;</a>
+<a href="index.php" class="close-btn" id="closeBtn" title="Cerrar">&times;</a>
 
 <div class="login-container">
     <h2>Iniciar sesión</h2>
 
     <?php 
     //^mensaje para en case de que se haya dejado alguna parte vacia
-        if (!empty($error)) : 
+    if (!empty($error)) : 
     ?> 
         <div class="error-msg"><?= htmlspecialchars($error) ?></div>
     <?php endif; ?>
