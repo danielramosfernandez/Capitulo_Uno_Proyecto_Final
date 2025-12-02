@@ -770,6 +770,26 @@ footer a:hover {
 .dark-mode footer a:hover {
   color: #ae9045;
 }
+/**Ajuste final para el footer */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+}
+
+.catalogo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
 
 
 /*

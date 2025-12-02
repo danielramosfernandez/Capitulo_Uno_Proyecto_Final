@@ -2,15 +2,13 @@
 session_start();
 include 'base_de_datos/conexion.php';
 
-//^Se realiza la consulta de todos los libros
+// Consultas de libros
 $sqlTodos = "SELECT * FROM libros"; 
 $resultTodos = $conexion->query($sqlTodos);
 
-//^Se realiza la consulta de los libros de categoria estandar 
 $sqlEstandar = "SELECT * FROM libros WHERE tipo_libro='estandar'";
 $resultEstandar = $conexion->query($sqlEstandar);
 
-//^Se realiza la consulta de los libros de categoria premium
 $sqlPremium = "SELECT * FROM libros WHERE tipo_libro='premium'";
 $resultPremium = $conexion->query($sqlPremium);
 ?>
@@ -24,21 +22,32 @@ $resultPremium = $conexion->query($sqlPremium);
 <link href="css/estilos.css" rel="stylesheet">
 <link rel="stylesheet" href="css/nav_dark.css">
 <link rel="icon" type="image/x-icon" href="multimedia/logo.png">
+<style>
+  /* Ajuste para footer siempre abajo */
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  main {
+    flex: 1;
+  }
+</style>
 </head>
 <body>
+
+<!-- Navbar -->
 <nav class="navbar navbar-expand-md sticky-top py-1 site-header">
   <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
-    
-
     <a class="py-2" href="inicio.php">
       <img src="multimedia/logo.png" alt="Logo" width="70" height="70" class="d-block mx-auto">
     </a>
 
-
     <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
 
     <div class="collapse navbar-collapse justify-content-md-end" id="navbarNav">
       <ul class="navbar-nav align-items-center">
@@ -66,90 +75,86 @@ $resultPremium = $conexion->query($sqlPremium);
   </div>
 </nav>
 
+<!-- Main -->
+<main>
+  <section class="catalogo py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Catálogo de Libros</h2>
 
+      <ul class="nav nav-tabs justify-content-center mb-4" id="catalogoTabs" role="tablist">
+        <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#todos">Todos</button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#estandar">Estándar</button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#premium">Premium</button></li>
+      </ul>
 
-
-<section class="catalogo py-5">
-  <div class="container">
-    <h2 class="text-center mb-4">Catálogo de Libros</h2>
-
-    <ul class="nav nav-tabs justify-content-center mb-4" id="catalogoTabs" role="tablist">
-      <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#todos">Todos</button></li>
-      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#estandar">Estándar</button></li>
-      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#premium">Premium</button></li>
-    </ul>
-
-    <div class="tab-content" id="catalogoContent">
-      
-      <!--Sección de todos los libros -->
-      <div class="tab-pane fade show active" id="todos">
-        <div class="row g-4">
-          <?php while($libro = $resultTodos->fetch_assoc()): ?>
-            <div class="col-md-3 col-sm-6">
-              <div class="card h-100 book-card">
-                <img src="<?= $libro['imagen'] ?>" alt="<?= $libro['titulo'] ?>" class="card-img-top">
-                <div class="card-body text-center">
-                  <h5 class="card-title"><?= $libro['titulo'] ?></h5>
-                  <p class="card-text"><?= $libro['autor'] ?></p>
-                  <a href="libro.php?id=<?= $libro['id_libro'] ?>" class="btn btn-vermas">Ver más</a>
-
+      <div class="tab-content" id="catalogoContent">
+        <!-- Todos los libros -->
+        <div class="tab-pane fade show active" id="todos">
+          <div class="row g-4">
+            <?php while($libro = $resultTodos->fetch_assoc()): ?>
+              <div class="col-md-3 col-sm-6">
+                <div class="card h-100 book-card">
+                  <img src="<?= $libro['imagen'] ?>" alt="<?= $libro['titulo'] ?>" class="card-img-top">
+                  <div class="card-body text-center">
+                    <h5 class="card-title"><?= $libro['titulo'] ?></h5>
+                    <p class="card-text"><?= $libro['autor'] ?></p>
+                    <a href="libro.php?id=<?= $libro['id_libro'] ?>" class="btn btn-vermas">Ver más</a>
+                  </div>
                 </div>
               </div>
-            </div>
-          <?php endwhile; ?>
+            <?php endwhile; ?>
+          </div>
         </div>
-      </div>
 
-      <!--Sección de los libros estandar -->
-      <div class="tab-pane fade" id="estandar">
-        <div class="row g-4">
-          <?php while($libro = $resultEstandar->fetch_assoc()): ?>
-            <div class="col-md-3 col-sm-6">
-              <div class="card h-100 book-card">
-                <img src="<?= $libro['imagen'] ?>" alt="<?= $libro['titulo'] ?>" class="card-img-top">
-                <div class="card-body text-center">
-                  <h5 class="card-title"><?= $libro['titulo'] ?></h5>
-                  <p class="card-text"><?= $libro['autor'] ?></p>
-                 <a href="libro.php?id=<?= $libro['id_libro'] ?>" class="btn btn-vermas">Ver más</a>
-
+        <!-- Libros estandar -->
+        <div class="tab-pane fade" id="estandar">
+          <div class="row g-4">
+            <?php while($libro = $resultEstandar->fetch_assoc()): ?>
+              <div class="col-md-3 col-sm-6">
+                <div class="card h-100 book-card">
+                  <img src="<?= $libro['imagen'] ?>" alt="<?= $libro['titulo'] ?>" class="card-img-top">
+                  <div class="card-body text-center">
+                    <h5 class="card-title"><?= $libro['titulo'] ?></h5>
+                    <p class="card-text"><?= $libro['autor'] ?></p>
+                    <a href="libro.php?id=<?= $libro['id_libro'] ?>" class="btn btn-vermas">Ver más</a>
+                  </div>
                 </div>
               </div>
-            </div>
-          <?php endwhile; ?>
+            <?php endwhile; ?>
+          </div>
         </div>
-      </div>
 
-      <!--Se muestra la tabla de la categoria premium -->
-      <div class="tab-pane fade" id="premium">
-        <div class="row g-4">
-          <?php while($libro = $resultPremium->fetch_assoc()): ?>
-            <div class="col-md-3 col-sm-6">
-              <div class="card h-100 book-card">
-                <img src="<?= $libro['imagen'] ?>" alt="<?= $libro['titulo'] ?>" class="card-img-top">
-                <div class="card-body text-center">
-                  <h5 class="card-title"><?= $libro['titulo'] ?></h5>
-                  <p class="card-text"><?= $libro['autor'] ?></p>
-                  <a href="libro.php?id=<?= $libro['id_libro'] ?>" class="btn btn-vermas">Ver más</a>
-
+        <!-- Libros premium -->
+        <div class="tab-pane fade" id="premium">
+          <div class="row g-4">
+            <?php while($libro = $resultPremium->fetch_assoc()): ?>
+              <div class="col-md-3 col-sm-6">
+                <div class="card h-100 book-card">
+                  <img src="<?= $libro['imagen'] ?>" alt="<?= $libro['titulo'] ?>" class="card-img-top">
+                  <div class="card-body text-center">
+                    <h5 class="card-title"><?= $libro['titulo'] ?></h5>
+                    <p class="card-text"><?= $libro['autor'] ?></p>
+                    <a href="libro.php?id=<?= $libro['id_libro'] ?>" class="btn btn-vermas">Ver más</a>
+                  </div>
                 </div>
               </div>
-            </div>
-          <?php endwhile; ?>
+            <?php endwhile; ?>
+          </div>
         </div>
-      </div>
 
+      </div>
     </div>
-  </div>
-</section>
-<footer class="text-white py-3" style="background: linear-gradient(135deg, #a18262, #6b4f3b);">
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="text-white py-3">
   <div class="container">
     <div class="row">
-      <!--En esta primera parte del footer tenemos los derechos  -->
       <div class="col-md-4 text-center text-md-start mb-2">
         <h6 class="fw-bold mb-1">CapituloUno</h6>
         <p class="small mb-0">© 2025 Todos los derechos reservados</p>
       </div>
-      <!--En estA segunda columna ponemos un poco de información sobre contactos -->
       <div class="col-md-4 text-center mb-2">
         <h6 class="fw-bold mb-2">Enlaces</h6>
         <ul class="list-unstyled mb-0">
@@ -158,23 +163,17 @@ $resultPremium = $conexion->query($sqlPremium);
           <li><a href="#contact" class="text-white text-decoration-none">Contacto</a></li>
         </ul>
       </div>
-      <!--En esta columna se dejan los enlaces a redes sociales -->
       <div class="col-md-4 text-center text-md-end mb-2">
         <h6 class="fw-bold mb-2">Síguenos</h6>
-        <a href="https://facebook.com" target="_blank" class="mx-2">
-          <img src="multimedia/facebook.png" alt="Facebook" width="28" height="28">
-        </a>
-        <a href="https://twitter.com" target="_blank" class="mx-2">
-          <img src="multimedia/twitter.png" alt="Twitter" width="28" height="28">
-        </a>
-        <a href="https://instagram.com" target="_blank" class="mx-2">
-          <img src="multimedia/instagram.png" alt="Instagram" width="28" height="28">
-        </a>
+        <a href="https://facebook.com" target="_blank" class="mx-2"><img src="multimedia/facebook.png" alt="Facebook" width="28" height="28"></a>
+        <a href="https://twitter.com" target="_blank" class="mx-2"><img src="multimedia/twitter.png" alt="Twitter" width="28" height="28"></a>
+        <a href="https://instagram.com" target="_blank" class="mx-2"><img src="multimedia/instagram.png" alt="Instagram" width="28" height="28"></a>
       </div>
     </div>
   </div>
 </footer>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="javascript/scripts.js"></script> <!-- Incluimos tu JS para modo oscuro -->
+<script src="javascript/scripts.js"></script>
 </body>
 </html>
