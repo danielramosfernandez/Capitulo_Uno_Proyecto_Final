@@ -12,21 +12,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $password = $_POST["password"];
     $password2 = $_POST["password2"];
 
-    /* ========================== */
-    /*    VALIDACIÓN EN PHP      */
-    /* ========================== */
-
+//^Validación usando php
+    
     if (strlen($usuario) < 3) {
+        //^Nombre con más de tres caractéres
         $error = "El nombre debe tener al menos 3 caracteres.";
+        //^email valido 
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = "El email no es válido.";
+        //^Cpntraseña de más de seis caractéres 
     } elseif (strlen($password) < 6) {
         $error = "La contraseña debe tener mínimo 6 caracteres.";
     } elseif ($password !== $password2) {
+        //^Comprobar que la contraseña coincida.
         $error = "Las contraseñas no coinciden.";
     } else {
 
-        // Comprobar usuario/email duplicado
+        //^Comprobar usuario/email duplicado
         $stmt = $conexion->prepare("SELECT id_usuario FROM usuarios WHERE nombre = ? OR email = ? LIMIT 1");
         $stmt->bind_param("ss", $usuario, $email);
         $stmt->execute();
@@ -36,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $error = "El usuario o email ya están registrados.";
         } else {
 
-            // Insertar usuario
+            //^insertar usuario
             $hash_password = password_hash($password, PASSWORD_DEFAULT);
 
             $stmt_insert = $conexion->prepare(
@@ -106,19 +108,17 @@ $conexion->close();
     </form>
 </div>
 
-<!-- ========================== -->
-<!--     VALIDACIÓN JS         -->
-<!-- ========================== -->
+
 
 <script>
-// Validar cierre con animación
+
 document.getElementById('closeBtn').addEventListener('click', function(e) {
     e.preventDefault();
     document.body.classList.add('fade-out');
     setTimeout(() => window.location.href = this.href, 180);
 });
 
-// Validación rápida en el navegador
+//^validación en el navegador usando Javascript
 document.querySelector("form").addEventListener("submit", function(e) {
     const usuario = document.getElementById("usuario").value.trim();
     const email = document.getElementById("email").value.trim();
@@ -131,7 +131,6 @@ document.querySelector("form").addEventListener("submit", function(e) {
         return;
     }
 
-    // Email válido
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
         alert("Introduce un email válido");
@@ -151,7 +150,6 @@ document.querySelector("form").addEventListener("submit", function(e) {
     }
 });
 
-// Modo oscuro
 if (localStorage.getItem("modo") === "oscuro") {
     document.body.classList.add("dark-mode");
 }
