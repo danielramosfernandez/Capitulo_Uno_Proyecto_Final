@@ -8,7 +8,7 @@ if(!isset($_SESSION['id_usuario'])){
     exit;
 }
 
-//^Se revisán los libros para mostrarlos en el desplegable
+//^Se revisan los libros para mostrarlos en el desplegable
 $sql_libros = "SELECT id_libro, titulo FROM libros ORDER BY titulo ASC";
 $resultado_libros = $conexion->query($sql_libros);
 
@@ -20,7 +20,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $comentario = trim($_POST['comentario']);
     $id_usuario = $_SESSION['id_usuario'];
 
-    //^Se realiza una validación en base a que el Id sea mayor de 0 la puntuación estre 1 y cinco y que no haya un comentario vacio
     if($id_libro <= 0 || $puntuacion < 1 || $puntuacion > 5 || empty($comentario)){
         $mensaje = '<p class="error-msg">Por favor completa todos los campos correctamente.</p>';
     } else {
@@ -41,13 +40,59 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
   <meta charset="UTF-8">   
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Escribir Opinión - CapituloUno</title> 
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="multimedia/logo.png">
   <link href="css/estilos.css" rel="stylesheet">
   <link rel="stylesheet" href="css/nav_dark.css">
+
+<style>
+/**Ajuste del footer*/
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+/**Main crece para empujar el footer */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/**Este contenedor también debe expandirse */
+.perfil-main {
+    flex: 1;
+}
+
+/**Botón corregido */
+.btn-cart {
+    background-color: #0d6efd !important;
+    color: white !important;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    width: auto;
+    display: inline-block;
+    text-align: center;
+    font-weight: 500;
+    transition: 0.2s;
+}
+.btn-cart:hover {
+    background-color: #0b5ed7 !important;
+}
+</style>
+
 </head>
 <body>
+
 <main>
 <nav class="navbar navbar-expand-md sticky-top py-1 site-header">
   <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
@@ -104,19 +149,20 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         <textarea name="comentario" id="comentario" class="form-control" rows="4" placeholder="Escribe tu opinión..." required></textarea>
       </div>
 
-      <button type="submit" class="btn btn-cart w-100">Publicar Opinión</button>
+      <button type="submit" class="btn btn-cart">Publicar Opinión</button>
     </form>
   </div>
 </div>
+</main>
+
 <footer class="text-white py-3" style="background: linear-gradient(135deg, #a18262, #6b4f3b);">
   <div class="container">
     <div class="row">
-      <!--En esta primera parte del footer tenemos los derechos  -->
       <div class="col-md-4 text-center text-md-start mb-2">
         <h6 class="fw-bold mb-1">CapituloUno</h6>
         <p class="small mb-0">© 2025 Todos los derechos reservados</p>
       </div>
-      <!--En estA segunda columna ponemos un poco de información sobre contactos -->
+
       <div class="col-md-4 text-center mb-2">
         <h6 class="fw-bold mb-2">Enlaces</h6>
         <ul class="list-unstyled mb-0">
@@ -125,7 +171,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
           <li><a href="#contact" class="text-white text-decoration-none">Contacto</a></li>
         </ul>
       </div>
-      <!--En esta columna se dejan los enlaces a redes sociales -->
+
       <div class="col-md-4 text-center text-md-end mb-2">
         <h6 class="fw-bold mb-2">Síguenos</h6>
         <a href="https://facebook.com" target="_blank" class="mx-2">
@@ -141,9 +187,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     </div>
   </div>
 </footer>
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  //?En esta página se rquiere poner directamente  el javascript aqui
 const body = document.body;
 const botonModo = document.getElementById('modo');
 if(localStorage.getItem('modo') === 'oscuro') {
@@ -161,5 +208,6 @@ botonModo.addEventListener('click', () => {
   }
 });
 </script>
+
 </body>
 </html>

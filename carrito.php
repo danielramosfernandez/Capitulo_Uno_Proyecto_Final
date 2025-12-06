@@ -194,7 +194,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 </table>
 
 <div class="d-flex justify-content-between align-items-center mt-3">
-    <div><strong>Total: $<?= number_format($total,2) ?></strong></div>
+    <div><strong>Total: <?= number_format($total,2) ?>€</strong></div>
     <div>
         <button type="submit" name="update" class="btn btn-primary">Actualizar cantidades</button>
         <a href="catalogo.php" class="btn btn-secondary">Seguir comprando</a>

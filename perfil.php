@@ -226,7 +226,6 @@ button:hover, .btn-vermas:hover, .btn-cart:hover, .btn-actualizar:hover, .btn-el
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>Pedido #</th>
         <th>Libro</th>
         <th>Fecha</th>
         <th>Precio</th>
@@ -239,7 +238,6 @@ button:hover, .btn-vermas:hover, .btn-cart:hover, .btn-actualizar:hover, .btn-el
       <?php else: ?>
         <?php foreach($historial as $pedido): ?>
         <tr>
-          <td><?= $pedido['id_compra'] ?></td>
           <td><?= htmlspecialchars($pedido['titulo']) ?></td>
           <td><?= date("d/m/Y", strtotime($pedido['fecha_compra'])) ?></td>
           <td><?= number_format($pedido['precio_pagado'],2) ?>€</td>

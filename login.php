@@ -1,5 +1,5 @@
 <?php
-// Activar errores para depuración
+//^Activar errores para depuración
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $_SESSION["nombre"] = $nombre_usuario;
                 $_SESSION["email"] = $email_usuario;
                 //^Si todo es correcto se le redirige al inicio
-                header("Location: index.php");
+                header("Location: inicio.php");
                 exit;
             } else {
                 //^Si no se introdujo la contraseña adecuada se notifica 
